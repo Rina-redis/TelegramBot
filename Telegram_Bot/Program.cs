@@ -44,29 +44,21 @@ namespace Telegram_Bot
                 {
                     case "/start":
                         SetChatId(message.Chat.Id);
-                        ShowInfo();
-                       // await currentClient.SendTextMessageAsync(chatId, "Выберите жанр", replyMarkup: GetButtonsWithGanres());
+                        ShowInfo();                 
                         break;
                     case "/ganres":
-                        ShowGanres();
+                        UI.ShowGanres(currentClient, chatId);
                         break;
 
 
                     default:                        
-                           // await currentClient.SendTextMessageAsync(message.Chat.Id, "Спасибо за собщение");
+                            await currentClient.SendTextMessageAsync(message.Chat.Id, "Спасибо за собщение");
                         break;
                 } 
             }
         }
 
-        private static void ShowGanres()
-        {
-            currentClient.SendTextMessageAsync(chatId, "/anime - аниме фильмы\n" +
-                                                        "/boievik - боевики\n" +
-                                                        "/biography - биографические\n" +
-                                                        "/vestern - вестерн\n" +
-                                                        "/military - военный\n");
-        }
+       
 
         private static IReplyMarkup GetButtonsWithGanres()
         {
